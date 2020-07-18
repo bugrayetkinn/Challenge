@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "39487360298",
+    "firebase_url": "https://mtekchallenge.firebaseio.com",
+    "project_id": "mtekchallenge",
+    "storage_bucket": "mtekchallenge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39487360298:android:9b272c16eb8783e694e253",
+        "android_client_info": {
+          "package_name": "com.yetkin.mtekchallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39487360298-e14ij4t6j16i99tmo44mpt7k2fptciht.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yetkin.mtekchallenge",
+            "certificate_hash": "5d313eb54c713b6d18bd9baf798204ca7b832d2d"
+          }
+        },
+        {
+          "client_id": "39487360298-56apebf14tmrt23gnc2qslmfbb4eogrr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9U25Op33llmpREoiDJaGFAFSgJfMhCU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39487360298-56apebf14tmrt23gnc2qslmfbb4eogrr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
