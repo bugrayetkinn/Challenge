@@ -1,7 +1,6 @@
 package com.yetkin.mtekchallenge.viewmodel
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,12 +17,13 @@ Created by : Buğra Yetkin
 Mail : bugrayetkinn@gmail.com
 
  */
-class PharmacyViewModel(val pharmacyRepository: PharmacyRepository) : ViewModel() {
+class PharmacyViewModel(private val pharmacyRepository: PharmacyRepository) : ViewModel() {
 
 
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-        Log.e("Exception New : ", throwable.message)
-    }
+    private val coroutineExceptionHandler =
+        CoroutineExceptionHandler { coroutineContext, throwable ->
+            Log.e("Exception New : ", throwable.message)
+        }
 
     fun getPharmacy(city: String, district: String): MutableLiveData<List<PharmacyModel>> {
 

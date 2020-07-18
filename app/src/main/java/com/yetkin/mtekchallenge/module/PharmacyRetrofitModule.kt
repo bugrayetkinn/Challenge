@@ -4,7 +4,6 @@ import com.yetkin.mtekchallenge.data.remote.Header
 import com.yetkin.mtekchallenge.data.remote.PharmacyAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,7 +33,7 @@ val pharmacyRetrofitModule = module {
     }
 
     single {
-        get<Retrofit>(named("pharmacyRetrofit")).create(PharmacyAPI::class.java)
+        get<Retrofit>().create(PharmacyAPI::class.java)
     }
 
 }
