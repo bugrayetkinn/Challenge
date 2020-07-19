@@ -1,5 +1,6 @@
 package com.yetkin.mtekchallenge.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.yetkin.mtekchallenge.data.model.PharmacyModel
 import com.yetkin.mtekchallenge.data.remote.PharmacyAPI
@@ -15,7 +16,7 @@ Mail : bugrayetkinn@gmail.com
 
 class PharmacyRepository(private val pharmacyAPI: PharmacyAPI) {
 
-    suspend fun getPharmacy(
+    suspend fun getData(
         city: String,
         district: String
     ): MutableLiveData<List<PharmacyModel>> {
@@ -24,8 +25,9 @@ class PharmacyRepository(private val pharmacyAPI: PharmacyAPI) {
         val response = pharmacyAPI.getPharmacys(city, district)
 
         if (response.isSuccessful) {
-            pharmacy.value = response.body()?.data
+            pharmacy.value = response.body()?.result
         }
+        Log.e("Status : ", "" + (pharmacy.value?.size ?: 0))
         return pharmacy
     }
 }

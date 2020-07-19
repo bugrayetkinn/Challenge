@@ -19,21 +19,26 @@ Mail : bugrayetkinn@gmail.com
 
 val pharmacyRetrofitModule = module {
 
-    single {
-        val logging = HttpLoggingInterceptor()
-        val header = Header()
-        val client = OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .addInterceptor(header)
-            .build()
-        Retrofit.Builder().baseUrl("https://api.collectapi.com/health/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
-    }
-
-    single {
-        get<Retrofit>().create(PharmacyAPI::class.java)
-    }
-
+    factory { Header() }
+    factory { provideOkHttpClient(get()) }
+    factory { provideForecastApi(get()) }
+    single { provideRetrofit(get()) }
 }
+
+fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    return Retrofit.Builder()
+        .baseUrl("https://api.collectapi.com/health/")
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+}
+
+fun provideOkHttpClient(header: Header): OkHttpClient {
+    return OkHttpClient.Builder().addInterceptor(header)
+        .addInterceptor(HttpLoggingInterceptor()).build()
+}
+
+fun provideForecastApi(retrofit: Retrofit): PharmacyAPI =
+    retrofit.create(PharmacyAPI::class.java)
+
+

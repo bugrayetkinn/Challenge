@@ -3,11 +3,10 @@ package com.yetkin.mtekchallenge.view.main
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.lifecycle.MutableLiveData
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import com.yetkin.mtekchallenge.R
@@ -20,8 +19,7 @@ import com.yetkin.mtekchallenge.viewmodel.PharmacyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.lang.StringBuilder
-import java.util.ArrayList
+import java.util.*
 
 class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
 
@@ -32,7 +30,7 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
     private val gson = Gson()
     var citySelected = ""
     var districtSelected = ""
-    //private val pharmacyViewModel: PharmacyViewModel by viewModel()
+    private val pharmacyViewModel: PharmacyViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,14 +116,14 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
             buttonList.setOnClickListener {
 
                 if (citySelected.isNotEmpty() && districtSelected.isNotEmpty()) {
-                   /* pharmacyViewModel.getPharmacy(citySelected, districtSelected)
+                    pharmacyViewModel.getPharmacy(citySelected, districtSelected)
                         .observe(viewLifecycleOwner,
                             Observer { list ->
                                 list.forEach { pharmacy ->
                                     Log.e("Name : ", pharmacy.name)
                                 }
 
-                            })*/
+                            })
                 } else {
                     Log.e("Status : ", "EMPTY")
                 }

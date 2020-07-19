@@ -31,9 +31,9 @@ class PharmacyViewModel(private val pharmacyRepository: PharmacyRepository) : Vi
 
         viewModelScope.launch(coroutineExceptionHandler) {
 
-            pharmacy.value = pharmacyRepository.getPharmacy(city, district).value
+            pharmacy.value = pharmacyRepository.getData(city, district).value
         }
-
+        Log.e("PharmacySize : ", "" + pharmacy.value?.size)
         return pharmacy
     }
 }

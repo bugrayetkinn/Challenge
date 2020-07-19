@@ -10,4 +10,7 @@ Created by : Buğra Yetkin
 Mail : bugrayetkinn@gmail.com
 
  */
-data class PharmacyListModel(@SerializedName("result") val data: List<PharmacyModel>)
+data class PharmacyListModel(
+    @SerializedName("result") val result: List<PharmacyModel>,
+    @SerializedName("success") val success: Boolean
+)
