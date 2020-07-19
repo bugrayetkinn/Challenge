@@ -21,6 +21,6 @@ interface PharmacyAPI {
         @Header("authorization") auth: String,
         @Header("content-type") contentType: String,
         @Query("city") city: String,
-        @Query("distict") district: String
+        @Query("district") district: String
     ): Response<PharmacyListModel>
 }
