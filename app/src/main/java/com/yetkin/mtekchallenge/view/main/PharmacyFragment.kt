@@ -8,8 +8,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.yetkin.mtekchallenge.R
+import com.yetkin.mtekchallenge.adapter.PharmacyAdapter
 import com.yetkin.mtekchallenge.data.model.City
 import com.yetkin.mtekchallenge.data.model.CityList
 import com.yetkin.mtekchallenge.data.model.DistrictList
@@ -31,6 +33,7 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
     var citySelected = ""
     var districtSelected = ""
     private val pharmacyViewModel: PharmacyViewModel by viewModel()
+    private lateinit var pharmacyAdapter: PharmacyAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,13 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
 
         pharmacyBinding.apply {
 
+            recyclerView.setHasFixedSize(true)
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            pharmacyAdapter = PharmacyAdapter {
+
+            }
+            recyclerView.adapter = pharmacyAdapter
+
             spinnerCity.setTitle("Select City")
             spinnerDistrict.setTitle("Select District")
             val cityListAdapter = ArrayAdapter(
@@ -51,7 +61,6 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
                 cityList
             )
             spinnerCity.adapter = cityListAdapter
-
             spinnerCity.onItemSelectedListener = object : AdapterView.OnItemClickListener,
                 AdapterView.OnItemSelectedListener {
                 override fun onItemClick(
@@ -119,15 +128,12 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
                     pharmacyViewModel.getPharmacy(citySelected, districtSelected)
                         .observe(viewLifecycleOwner,
                             Observer { list ->
-                                list.forEach { pharmacy ->
-                                    Log.e("Name : ", pharmacy.name)
+                                list.forEach {
+                                    Log.e("Name : ", it.name)
                                 }
-
+                                (recyclerView.adapter as PharmacyAdapter).submitList(list)
                             })
-                } else {
-                    Log.e("Status : ", "EMPTY")
                 }
-
             }
 
 

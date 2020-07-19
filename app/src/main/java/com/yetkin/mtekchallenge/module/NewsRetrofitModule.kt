@@ -17,13 +17,17 @@ Mail : bugrayetkinn@gmail.com
 
 val newsRetrofitModule = module {
 
-    factory {
-        Retrofit.Builder()
-            .baseUrl("https://newsapi.org")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    single {
+        named("news")
+        createWebService<NewsAPI>("https://newsapi.org")
     }
-    factory {
-        get<Retrofit>().create(NewsAPI::class.java)
-    }
+}
+
+inline fun <reified T> createWebService(
+    baseUrl: String
+): T {
+    val retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .addConverterFactory(GsonConverterFactory.create()).build()
+    return retrofit.create(T::class.java)
 }

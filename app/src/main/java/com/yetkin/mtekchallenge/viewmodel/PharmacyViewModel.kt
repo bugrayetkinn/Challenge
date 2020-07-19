@@ -33,7 +33,6 @@ class PharmacyViewModel(private val pharmacyRepository: PharmacyRepository) : Vi
 
             pharmacy.value = pharmacyRepository.getData(city, district).value
         }
-        Log.e("PharmacySize : ", "" + pharmacy.value?.size)
         return pharmacy
     }
 }

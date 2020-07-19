@@ -14,5 +14,5 @@ Mail : bugrayetkinn@gmail.com
  */
 
 val newsRepositoryModule = module {
-    single { NewsRepository(get()) }
+    factory<NewsRepository> { NewsRepository(newsAPI = get(named("news"))) }
 }
