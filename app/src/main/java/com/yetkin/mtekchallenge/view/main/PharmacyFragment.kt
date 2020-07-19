@@ -71,7 +71,7 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
                     position: Int,
                     id: Long
                 ) {
-                    citySelected = parent?.selectedItem.toString().toLowerCase()
+                    citySelected = parent?.selectedItem.toString().toUpperCase()
                     districtList1.clear()
                     loadDistrict(requireContext(), city[position].sehirId)
                 }
@@ -106,7 +106,7 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
                     id: Long
                 ) {
 
-                    districtSelected = parent?.selectedItem.toString().toLowerCase()
+                    districtSelected = parent?.selectedItem.toString().toUpperCase()
                 }
 
             }
