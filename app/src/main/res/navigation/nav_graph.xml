@@ -18,7 +18,11 @@
         android:id="@+id/pharmacyFragment"
         android:name="com.yetkin.mtekchallenge.view.main.pharmacy.PharmacyFragment"
         android:label="fragment_pharmacy"
-        tools:layout="@layout/fragment_pharmacy" />
+        tools:layout="@layout/fragment_pharmacy">
+        <action
+            android:id="@+id/action_pharmacyFragment_to_pharmacyMapFragment"
+            app:destination="@id/pharmacyMapFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profilFragment"
         android:name="com.yetkin.mtekchallenge.view.main.ProfilFragment"
@@ -29,4 +33,9 @@
         android:name="com.yetkin.mtekchallenge.view.main.news.NewsDetailFragment"
         android:label="fragment_news_detail"
         tools:layout="@layout/fragment_news_detail" />
+    <fragment
+        android:id="@+id/pharmacyMapFragment"
+        android:name="com.yetkin.mtekchallenge.view.main.pharmacy.PharmacyMapFragment"
+        android:label="fragment_pharmacy_map"
+        tools:layout="@layout/fragment_pharmacy_map" />
 </navigation>
