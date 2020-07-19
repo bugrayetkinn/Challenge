@@ -21,7 +21,7 @@ val pharmacyRetrofitModule = module {
 
     factory { Header() }
     factory { provideOkHttpClient(get()) }
-    factory { provideForecastApi(get()) }
+    factory { providePharmacyApi(get()) }
     single { provideRetrofit(get()) }
 }
 
@@ -38,7 +38,7 @@ fun provideOkHttpClient(header: Header): OkHttpClient {
         .addInterceptor(HttpLoggingInterceptor()).build()
 }
 
-fun provideForecastApi(retrofit: Retrofit): PharmacyAPI =
+fun providePharmacyApi(retrofit: Retrofit): PharmacyAPI =
     retrofit.create(PharmacyAPI::class.java)
 
 

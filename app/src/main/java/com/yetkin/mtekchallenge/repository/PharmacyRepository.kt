@@ -1,6 +1,5 @@
 package com.yetkin.mtekchallenge.repository
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.yetkin.mtekchallenge.data.model.PharmacyModel
 import com.yetkin.mtekchallenge.data.remote.PharmacyAPI
@@ -27,7 +26,6 @@ class PharmacyRepository(private val pharmacyAPI: PharmacyAPI) {
         if (response.isSuccessful) {
             pharmacy.value = response.body()?.result
         }
-        Log.e("Status : ", "" + (pharmacy.value?.size ?: 0))
         return pharmacy
     }
 }
