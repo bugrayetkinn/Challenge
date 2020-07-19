@@ -15,15 +15,23 @@ Mail : bugrayetkinn@gmail.com
 class PharmacyHolder(private val pharmacyCardBinding: PharmacyCardBinding) :
     RecyclerView.ViewHolder(pharmacyCardBinding.root) {
 
-    fun bind(pharmacyModel: PharmacyModel, setOnClickListener: (PharmacyModel) -> Unit) {
+    fun bind(
+        pharmacyModel: PharmacyModel,
+        setOnPhoneClickListener: (String) -> Unit,
+        setOnMapClickListener: (String) -> Unit
+    ) {
         pharmacyCardBinding.apply {
             textViewAdress.text = pharmacyModel.address
             textViewPharmacyName.text = pharmacyModel.name
             textViewPharmacyPhone.text = pharmacyModel.phone
 
-            root.setOnClickListener {
-                setOnClickListener(pharmacyModel)
+            imageViewPhone.setOnClickListener {
+                setOnPhoneClickListener(pharmacyModel.phone)
             }
+            imageViewMap.setOnClickListener {
+                setOnMapClickListener(pharmacyModel.address)
+            }
+
         }
 
     }

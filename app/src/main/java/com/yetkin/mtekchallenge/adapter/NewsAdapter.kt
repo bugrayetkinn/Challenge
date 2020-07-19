@@ -24,7 +24,7 @@ class NewsAdapter(
         val newsCardBinding: NewsCardBinding =
             NewsCardBinding.inflate(LayoutInflater.from(parent.context))
 
-        return NewsHolder(newsCardBinding, parent.context)
+        return NewsHolder(newsCardBinding)
 
     }
 

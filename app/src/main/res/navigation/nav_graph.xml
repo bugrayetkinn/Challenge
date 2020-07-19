@@ -7,12 +7,16 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.yetkin.mtekchallenge.view.main.NewsFragment"
+        android:name="com.yetkin.mtekchallenge.view.main.news.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pharmacyFragment"
-        android:name="com.yetkin.mtekchallenge.view.main.PharmacyFragment"
+        android:name="com.yetkin.mtekchallenge.view.main.pharmacy.PharmacyFragment"
         android:label="fragment_pharmacy"
         tools:layout="@layout/fragment_pharmacy" />
     <fragment
@@ -20,4 +24,9 @@
         android:name="com.yetkin.mtekchallenge.view.main.ProfilFragment"
         android:label="fragment_profil"
         tools:layout="@layout/fragment_profil" />
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.yetkin.mtekchallenge.view.main.news.NewsDetailFragment"
+        android:label="fragment_news_detail"
+        tools:layout="@layout/fragment_news_detail" />
 </navigation>

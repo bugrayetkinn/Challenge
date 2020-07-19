@@ -1,11 +1,13 @@
-package com.yetkin.mtekchallenge.view.main
+package com.yetkin.mtekchallenge.view.main.news
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.yetkin.mtekchallenge.R
 import com.yetkin.mtekchallenge.adapter.NewsAdapter
@@ -26,9 +28,23 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         val backPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                val intent = Intent(Intent.ACTION_MAIN)
-                intent.addCategory(Intent.CATEGORY_HOME)
-                startActivity(intent)
+
+
+                val dialog = AlertDialog.Builder(context)
+                dialog.setMessage("Log out ?")
+                dialog.setPositiveButton(
+                    "Yes"
+                ) { dialog, which ->
+
+                    val intent = Intent(Intent.ACTION_MAIN)
+                    intent.addCategory(Intent.CATEGORY_HOME)
+                    startActivity(intent)
+                }
+                dialog.setNegativeButton(
+                    "No"
+                ) { dialog, which -> dialog?.dismiss() }
+                dialog.show()
+
 
             }
         }
@@ -44,7 +60,13 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         newsBinding.apply {
 
-            newsAdapter = NewsAdapter {
+            newsAdapter = NewsAdapter { newsModel ->
+
+                val bundle = Bundle()
+                bundle.putString("url", newsModel.url)
+
+                NavHostFragment.findNavController(this@NewsFragment)
+                    .navigate(R.id.action_newsFragment_to_newsDetailFragment, bundle)
 
             }
 

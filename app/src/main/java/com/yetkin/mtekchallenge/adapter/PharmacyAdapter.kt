@@ -16,7 +16,8 @@ Mail : bugrayetkinn@gmail.com
 
  */
 class PharmacyAdapter(
-    private val setOnclickListener: (PharmacyModel) -> Unit
+    private val setOnPhoneclickListener: (String) -> Unit,
+    private val setOnMapClickListener: (String) -> Unit
 ) : ListAdapter<PharmacyModel, PharmacyHolder>(DiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PharmacyHolder {
 
@@ -25,7 +26,7 @@ class PharmacyAdapter(
     }
 
     override fun onBindViewHolder(holder: PharmacyHolder, position: Int) {
-        holder.bind(getItem(position), setOnclickListener)
+        holder.bind(getItem(position), setOnPhoneclickListener, setOnMapClickListener)
     }
 
     class DiffCallBack : DiffUtil.ItemCallback<PharmacyModel>() {
