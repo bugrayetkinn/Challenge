@@ -1,7 +1,9 @@
 package com.yetkin.mtekchallenge
 
 import android.app.Application
-import com.yetkin.mtekchallenge.module.*
+import com.yetkin.mtekchallenge.module.newsViewModelModule
+import com.yetkin.mtekchallenge.module.pharmacyViewModelModule
+import com.yetkin.mtekchallenge.module.retrofitModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -21,8 +23,8 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
             modules(
-                newsRetrofitModule, newsRepositoryModule, newsViewModelModule,
-                pharmacyViewModelModule, pharmacyRetrofitModule, pharmacyRepositoryModule
+                retrofitModule, newsViewModelModule,
+                pharmacyViewModelModule
             )
         }
     }

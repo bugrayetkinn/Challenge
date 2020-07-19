@@ -2,7 +2,8 @@ package com.yetkin.mtekchallenge.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.yetkin.mtekchallenge.data.model.NewsModel
 import com.yetkin.mtekchallenge.databinding.NewsCardBinding
 
@@ -15,27 +16,30 @@ Mail : bugrayetkinn@gmail.com
 
  */
 class NewsAdapter(
-    private val news: ArrayList<NewsModel>,
+
     private val setOnClickListener: (NewsModel) -> Unit
-) :
-    RecyclerView.Adapter<NewsHolder>() {
-
+) : ListAdapter<NewsModel, NewsHolder>(DiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsHolder {
-        val newsCardBinding = NewsCardBinding.inflate(LayoutInflater.from(parent.context))
-        return NewsHolder(newsCardBinding, parent.context)
-    }
 
-    override fun getItemCount(): Int = news.size
+        val newsCardBinding: NewsCardBinding =
+            NewsCardBinding.inflate(LayoutInflater.from(parent.context))
+
+        return NewsHolder(newsCardBinding, parent.context)
+
+    }
 
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
-        holder.bind(news[position], setOnClickListener)
+        holder.bind(getItem(position), setOnClickListener)
     }
 
-    fun addNews(news: ArrayList<NewsModel>) {
-        this.news.apply {
-            clear()
-            addAll(news)
-        }
+    class DiffCallBack : DiffUtil.ItemCallback<NewsModel>() {
+        override fun areItemsTheSame(oldItem: NewsModel, newItem: NewsModel): Boolean =
+            oldItem.title == newItem.title
+
+
+        override fun areContentsTheSame(oldItem: NewsModel, newItem: NewsModel): Boolean =
+            oldItem == newItem
+
     }
 
 }
