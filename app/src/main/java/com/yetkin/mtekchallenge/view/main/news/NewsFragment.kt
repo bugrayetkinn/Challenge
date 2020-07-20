@@ -81,8 +81,20 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
                 (recyclerview.adapter as NewsAdapter).submitList(newsList)
                 progressBar.visibility = View.GONE
             })
+
+            swipeRefresh.setOnRefreshListener {
+                progressBar.visibility = View.VISIBLE
+                getData()
+                swipeRefresh.isRefreshing = false
+            }
         }
     }
 
+    fun getData() {
+        newsViewModel.getData().observe(viewLifecycleOwner, Observer { newsList ->
 
+            (newsBinding.recyclerview.adapter as NewsAdapter).submitList(newsList)
+            newsBinding.progressBar.visibility = View.GONE
+        })
+    }
 }
