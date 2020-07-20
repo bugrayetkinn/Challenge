@@ -6,4 +6,6 @@
     <string name="password">password</string>
     <string name="login">Login</string>
     <string name="list">List</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
 </resources>
