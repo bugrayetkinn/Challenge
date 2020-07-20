@@ -4,12 +4,21 @@
 
     <item
         android:id="@+id/newsFragment"
-        android:title="News" />
+        android:icon="@drawable/newspaper"
+        android:title="News"
+        app:showAsAction="always|withText" />
     <item
         android:id="@+id/pharmacyFragment"
-        android:title="Pharmacy" />
+        android:icon="@drawable/pharmacy5"
+        android:title="Pharmacy"
+        app:showAsAction="always|withText" />
     <item
         android:id="@+id/profilFragment"
-        android:title="Profil" />
-    <item android:title="Logout" />
+        android:icon="@drawable/user5"
+        android:title="Profil"
+        app:showAsAction="always|withText" />
+    <item
+        android:icon="@drawable/exit"
+        android:title="Logout"
+        app:showAsAction="always|withText" />
 </menu>

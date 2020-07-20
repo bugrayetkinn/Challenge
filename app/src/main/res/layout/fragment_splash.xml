@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_splash_scene"
     tools:context=".view.login.SplashFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Splash Fragment"
-        android:textSize="40dp" />
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="smilex.json"
+        app:lottie_loop="true" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

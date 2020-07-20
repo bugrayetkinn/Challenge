@@ -1,8 +1,10 @@
 package com.yetkin.mtekchallenge.view.main
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.yetkin.mtekchallenge.R
@@ -26,6 +28,21 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment_container)
         NavigationUI.setupWithNavController(mainBinding.bottomNavigation, navController)
         NavigationUI.setupWithNavController(mainBinding.navigation, navController)
-
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        supportFragmentManager.primaryNavigationFragment?.childFragmentManager?.fragments?.forEach {
+            it.onActivityResult(requestCode, resultCode, data)
+        }
+
+        for (fragment: Fragment in supportFragmentManager.fragments) {
+            fragment.onActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+//    fun onExitClick(view: View) {
+//        Toast.makeText(view.context, "Tıklandı", Toast.LENGTH_LONG).show()
+//    }
 }

@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/profilFragment"
-        android:name="com.yetkin.mtekchallenge.view.main.ProfilFragment"
+        android:name="com.yetkin.mtekchallenge.view.main.profil.ProfilFragment"
         android:label="fragment_profil"
         tools:layout="@layout/fragment_profil" />
     <fragment

@@ -1,13 +1,13 @@
 package com.yetkin.mtekchallenge.view.login
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.yetkin.mtekchallenge.R
@@ -19,10 +19,15 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val loginFragmentBinding: FragmentLoginBinding by viewBinding(FragmentLoginBinding::bind)
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var editor: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val pref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
+        if (pref != null) {
+            editor = pref.edit()
+        }
         firebaseAuth = FirebaseAuth.getInstance()
     }
 
@@ -42,6 +47,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
 
                         if (it.isSuccessful) {
+                            editor.putString("email", email).apply()
                             startActivity(Intent(activity, MainActivity::class.java))
                         } else {
                             Toast.makeText(context, it.exception?.message, Toast.LENGTH_LONG).show()
