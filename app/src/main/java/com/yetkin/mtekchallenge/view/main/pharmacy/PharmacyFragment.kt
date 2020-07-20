@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -128,15 +127,13 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
             }
 
             buttonList.setOnClickListener {
-
                 if (citySelected.isNotEmpty() && districtSelected.isNotEmpty()) {
+                    progressBar2.visibility = View.VISIBLE
                     pharmacyViewModel.getPharmacy(citySelected, districtSelected)
                         .observe(viewLifecycleOwner,
                             Observer { list ->
-                                list.forEach {
-                                    Log.e("Name : ", it.name)
-                                }
                                 (recyclerView.adapter as PharmacyAdapter).submitList(list)
+                                progressBar2.visibility = View.GONE
                             })
                 }
             }

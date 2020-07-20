@@ -60,6 +60,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         newsBinding.apply {
 
+            progressBar.visibility = View.VISIBLE
             newsAdapter = NewsAdapter { newsModel ->
 
                 val bundle = Bundle()
@@ -78,6 +79,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
             newsViewModel.getData().observe(viewLifecycleOwner, Observer { newsList ->
 
                 (recyclerview.adapter as NewsAdapter).submitList(newsList)
+                progressBar.visibility = View.GONE
             })
         }
     }
