@@ -12,7 +12,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val timer = object : CountDownTimer(3500, 1000) {
+        object : CountDownTimer(3500, 1000) {
             override fun onFinish() {
                 NavHostFragment.findNavController(this@SplashFragment)
                     .navigate(R.id.action_splashFragment2_to_loginFragment)
