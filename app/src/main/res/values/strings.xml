@@ -8,4 +8,7 @@
     <string name="list">List</string>
     <string name="sign_in">Sign In</string>
     <string name="register">Register</string>
+    <string name="news">News</string>
+    <string name="pharmacy">Pharmacy</string>
+    <string name="profil">Profil</string>
 </resources>

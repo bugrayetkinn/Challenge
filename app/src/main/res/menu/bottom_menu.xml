@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/newsFragment"
         android:icon="@drawable/newspaper"
-        android:title="News"
+        android:menuCategory="secondary"
+        android:title="@string/news"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/pharmacyFragment"
         android:icon="@drawable/pharmacy5"
-        android:title="Pharmacy"
+        android:menuCategory="secondary"
+        android:title="@string/pharmacy"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/profilFragment"
         android:icon="@drawable/user5"
-        android:title="Profil"
+        android:menuCategory="secondary"
+        android:title="@string/profil"
         app:showAsAction="always|withText" />
 </menu>

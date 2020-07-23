@@ -16,7 +16,6 @@ Mail : bugrayetkinn@gmail.com
 
  */
 class NewsAdapter(
-
     private val setOnClickListener: (NewsModel) -> Unit
 ) : ListAdapter<NewsModel, NewsHolder>(DiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsHolder {

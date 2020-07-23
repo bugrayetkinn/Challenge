@@ -240,4 +240,5 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
             }
         }
     }
+
 }
