@@ -5,19 +5,16 @@
     <item
         android:id="@+id/newsFragment"
         android:icon="@drawable/newspaper"
-        android:menuCategory="secondary"
         android:title="@string/news"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/pharmacyFragment"
         android:icon="@drawable/pharmacy5"
-        android:menuCategory="secondary"
         android:title="@string/pharmacy"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/profilFragment"
         android:icon="@drawable/user5"
-        android:menuCategory="secondary"
         android:title="@string/profil"
         app:showAsAction="always|withText" />
 </menu>
